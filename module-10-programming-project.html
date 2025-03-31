@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 <head>
@@ -8,56 +7,69 @@
 <script>
 
 //-----------------//
-// try catch //
+// Try-Catch //
 //-----------------//
 console.log("Browser Version");
 
-// 1. Implement a Try Catch routeine into this code below
-  var results = 12;
+// 1. Implement a Try-Catch routine
+try {
+    var results = 12;
+    console.log(results);
+    console.log('An error occurred:', error.message); // This line would cause an error
+} catch (error) {
+    console.log('An error occurred:', error.message);
+}
 
-  console.log(results);
-  console.log('An error occured:', error.message);
+// 2. Generate an error intentionally
+try {
+    var results = undefinedVariable; // This will cause a ReferenceError
+} catch (error) {
+    console.log('An error occurred:', error.message);
+}
 
-// 2. Take the code produced in #1 and create a routine that will generate an error 
-//    provide that code here
-
-// 3. Provide in words what the output of the error is here
-
+// 3. Expected output:
+// - First try block: No error, prints `results` but catches `error.message` issue.
+// - Second try block: Produces `ReferenceError: undefinedVariable is not defined`.
 
 //-----------------//
 // Finally //
 //-----------------//
 console.log("Finally");
 
-// 1. Create a try catch and finally with the following details
-      console.log(Trying);
-      console.log('An error occured:', error.message);
-      console.log('Finally blocked executed');
-  
-// 2. Take the code from #1 in Finally and take first part and ensure it's not produced
-//    as an error and create a way to perform a finally statement with the following output
-      
-      console.log('Finally blocked it, yay')
+// 1. Try-Catch-Finally with proper handling
+try {
+    console.log("Trying");
+    nonExistentFunction(); // This will throw an error
+} catch (error) {
+    console.log('An error occurred:', error.message);
+} finally {
+    console.log('Finally block executed');
+}
 
+// 2. Ensure `finally` executes regardless of error
+try {
+    console.log("Safe Execution");
+} finally {
+    console.log('Finally blocked it, yay');
+}
 
 //-----------------//
 // Throw //
 //-----------------//
 console.log("Throw");
-  
-// 1. Create a try to validate if the variable number is a numeric value
-   var number = "b";
 
-// 2. Append the code from #1 and add the ability to create a throw with a response of
-   console.log("Not a numeric value");
+// 1. Validate if `number` is numeric
+var number = "b";
 
-// 3. Provide an Else response with the output
-   console.log("It is a numeric value");
-
-// 4. Provide a catch error with a response of 
-   console.log(error.message)
-
-
+try {
+    if (isNaN(number)) {
+        throw new Error("Not a numeric value");
+    } else {
+        console.log("It is a numeric value");
+    }
+} catch (error) {
+    console.log(error.message);
+}
 
 </script>
 </head>
